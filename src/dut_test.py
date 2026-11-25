@@ -54,10 +54,11 @@ class DutTest(Project):
         counter = counter + 1
         procedure.context.attribute_set("counter", counter)
         msg = f"counter: {counter}"
-        sleep_seconds = 1
+        sleep_seconds = 3
         max_count = 5
-        operations = ["forever", "count"]
-        operation = "count"
+
+        operation = ["forever", "count"][0]
+
         if operation == "forever":
             procedure.nextstate_sleep_and_repeat(sleep_seconds)
         elif operation == "count":

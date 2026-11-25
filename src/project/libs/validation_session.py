@@ -2,7 +2,7 @@
 
 from ats_engine.constants import DEF_DB_COL_SESSION, DEF_DB_COL_TEST
 from ats_engine.framework import framework
-from project.db import database
+from ats_engine.db import database
 
 DEF_PASS = True
 DEF_FAIL = not DEF_PASS

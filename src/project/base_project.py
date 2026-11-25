@@ -8,6 +8,7 @@ from ats_engine.framework import framework
 from ats_engine.logger import create_log
 from ats_engine.procedure import Procedure
 from ats_engine.procedure_builder import ProcedureBuilder
+
 # from engine.constants import *
 
 # from instruments.instrument import Instrument
@@ -32,8 +33,19 @@ logger = logging.getLogger("[user]")
 
 class BaseProject:
     def __init__(self, config):
+        self.config = config
         # self.init_repo_by_json()
-        pass
+        if config.get("heartbeat_enable", False):
+            self.start_is_alive()
+
+    @staticmethod
+    def start_is_alive():
+        """Start the is_alive heartbeat procedure and register it with the framework."""
+        from project.procs.is_alive import build_is_alive_procedure
+
+        procedure = build_is_alive_procedure()
+        procedure.start()
+        framework.procedure_append(procedure)
 
     def base_flow_export(self, project_procedure: Procedure):
         base_flow_build = ProcedureBuilder("beta")

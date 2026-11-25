@@ -6,6 +6,7 @@ from ats_engine.framework import framework
 config = {
     "phase": "A0",
     "phases": ["A0", "A1", "A2"],
+    "heartbeat_enable": True,  # start the is_alive heartbeat procedure (project/procs/is_alive.py)
 }
 
 
