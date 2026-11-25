@@ -1,6 +1,6 @@
-from engine.constants import *
+from ats_engine.constants import *
 from project.types import *
-from engine.utils import *
+from ats_engine.utils import *
 
 
 class DutRegisterMap(Register):

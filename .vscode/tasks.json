@@ -29,6 +29,19 @@
       "presentation": { "reveal": "always", "panel": "dedicated" }
     },
     {
+      "label": "Deactivate venv",
+      "type": "shell",
+      "command": ".venv\\Scripts\\deactivate.bat",
+      "options": {
+        "shell": {
+          "executable": "cmd.exe",
+          "args": ["/d", "/k"]
+        }
+      },
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
       "label": "Install requirements",
       "type": "shell",
       "command": ".venv\\Scripts\\python.exe -m pip install -r requirements.txt",

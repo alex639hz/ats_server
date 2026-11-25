@@ -11,7 +11,7 @@ from io import BufferedWriter
 from pathlib import Path
 from pyvisa.resources import MessageBasedResource
 from enum import Enum
-from engine.utils import Utils
+from ats_engine.utils import Utils
 from project.instruments.instrument_repo import repository
 from project.instruments.instrument_type import InstrumentType
 

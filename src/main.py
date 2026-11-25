@@ -1,7 +1,7 @@
 """Author: Alex Zvuluny | Email: alex.639hz@gmail.com"""
 
 from dut_test import DutTest
-from engine.framework import framework
+from ats_engine.framework import framework
 
 config = {
     "phase": "A0",

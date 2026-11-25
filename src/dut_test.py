@@ -3,11 +3,11 @@
 import logging
 
 # from engine.framework import framework
-from engine.constants import *
-from engine.framework import framework
-from engine.procedure_builder import ProcedureBuilder
-from engine.types import StepInterface
-from engine.utils import Utils
+from ats_engine.constants import *
+from ats_engine.framework import framework
+from ats_engine.procedure_builder import ProcedureBuilder
+from ats_engine.types import StepInterface
+from ats_engine.utils import Utils
 from project.project import Project
 from project.instruments.types.instrument_scope import Scope
 from project.instruments.serial_instrument import InstrumentSerial
@@ -41,7 +41,9 @@ class DutTest(Project):
         procedure, args = Utils.extract_step_interface(step_interface)
 
         instrument = InstrumentSerial(6)
-        msg_from_visa = instrument.send_and_read(address=1, command=13, params={"param1": 22})
+        msg_from_visa = instrument.send_and_read(
+            address=1, command=13, params={"param1": 22}
+        )
         instrument.close()
 
         return msg_from_visa
@@ -52,14 +54,17 @@ class DutTest(Project):
         counter = counter + 1
         procedure.context.attribute_set("counter", counter)
         msg = f"counter: {counter}"
-        ONE_SECOND = 1
-        MAX_SECONDS = 5
-        SHOULD_EXIT = False
-        if counter < MAX_SECONDS:
-            procedure.nextstate_sleep_and_repeat(ONE_SECOND)
-        else:
-            msg = f"completed: {counter}"
-            if SHOULD_EXIT:
+        sleep_seconds = 1
+        max_count = 5
+        operations = ["forever", "count"]
+        operation = "count"
+        if operation == "forever":
+            procedure.nextstate_sleep_and_repeat(sleep_seconds)
+        elif operation == "count":
+            if counter < max_count:
+                procedure.nextstate_sleep_and_repeat(sleep_seconds)
+            else:
+                msg = f"completed: {counter}"
                 procedure.nextstate_exit()
 
         return msg

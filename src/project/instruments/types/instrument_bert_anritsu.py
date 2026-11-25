@@ -4,14 +4,14 @@ DEF_USE_VIRTUAL_PYVISA = True
 DEF_DEFAULT_VISA_TIMEOUT_MS = 10_000
 
 if DEF_USE_VIRTUAL_PYVISA:
-    import engine.virtual_pyvisa as pyvisa
+    import project.instruments.virtual.virtual_pyvisa as pyvisa
 else:
     import pyvisa
 
 from enum import Enum
-from engine.constants import STEP
-from engine.utils import Utils
-from engine.instruments.instrument import Instrument
+from ats_engine.constants import STEP
+from ats_engine.utils import Utils
+from project.instruments.instrument import Instrument
 
 
 class InstrumentBertAnritsu(Instrument):

@@ -3,16 +3,16 @@
 import logging
 
 # from engine import utils
-from engine.constants import DEF_OK
-from engine.framework import framework
-from engine.logger import create_log
-from engine.procedure import Procedure
-from engine.procedure_builder import ProcedureBuilder
+from ats_engine.constants import DEF_OK
+from ats_engine.framework import framework
+from ats_engine.logger import create_log
+from ats_engine.procedure import Procedure
+from ats_engine.procedure_builder import ProcedureBuilder
 # from engine.constants import *
 
 # from instruments.instrument import Instrument
-from engine.types import StepInterface
-from engine.utils import Utils
+from ats_engine.types import StepInterface
+from ats_engine.utils import Utils
 
 from project.conf import project_path
 from project.instruments.instrument_repo import repository
